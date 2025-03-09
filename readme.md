@@ -6,3 +6,5 @@ Below are steps per i18n article, ["How to Easily Add Internationalization (i18n
 
 - Use [react-i18next](https://github.com/i18next/react-i18next) library for React bindings
 - Use the [i18next-browser-language-detector](https://github.com/i18next/i18next-browser-languageDetector) to determine default language from browser settings
+
+- use [i18next-http-backend](https://github.com/i18next/i18next-http-backend) library to locally fetch the translation resources from external files.

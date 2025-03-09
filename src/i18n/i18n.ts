@@ -1,6 +1,6 @@
 import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
-import HttpApi from "i18next-http-backend";
+import Backend from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
 
 import i18nextBackendOptions from "./i18nextBackendOptions";
@@ -20,11 +20,11 @@ export const languageDetector = (() => {
   return langDetector;
 })();
 
-export const httpApi = new HttpApi(i18nextBackendOptions);
+export const backend = new Backend(i18nextBackendOptions);
 
 // Deliberate global variable:
 i18n
-  //.use(httpApi)
+  .use(backend)
   .use(LanguageDetector)
   // pass the i18n instance to react-i18next.
   .use(initReactI18next)
@@ -42,27 +42,5 @@ i18n
 
     react: {
       bindI18n: "languageChanged editorSaved",
-    },
-    resources: {
-      en: {
-        translation: {
-          appDetail:
-            "This is a React app showing how to use the i18n approach for multi-language support. It is pretty interesting.",
-          howWeTranslate: "This is how we can translate messages",
-          found: "found",
-          langDetected: "Language Detected:",
-          nothing: "nothing",
-        },
-      },
-      es: {
-        translation: {
-          appDetail:
-            "Esta es una aplicación React que muestra cómo usar el enfoque i18n para soporte multilingüe. Es bastante interesante.",
-          found: "encontrado",
-          howWeTranslate: "Así es como podemos traducir los mensajes",
-          langDetected: "Idioma detectado:",
-          nothing: "nada",
-        },
-      },
     },
   });

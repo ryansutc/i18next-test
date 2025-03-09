@@ -1,3 +1,5 @@
+import { DetectorOptions } from "i18next-browser-languagedetector";
+
 /**
  * These are the options for the i18next language detection
  * library. See: https://github.com/i18next/i18next-browser-languageDetector
@@ -35,4 +37,4 @@ export default {
 
   // optional conversion function used to modify the detected language code
   convertDetectedLanguage: "Iso15897",
-};
+} as DetectorOptions;

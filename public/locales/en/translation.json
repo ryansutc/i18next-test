@@ -1,0 +1,7 @@
+{
+  "appDetail": "This is a React app showing how to use the i18n approach for multi-language support. It is pretty interesting.",
+  "found": "found",
+  "howWeTranslate": "This is how we can translate messages",
+  "langDetected": "Language Detected:",
+  "nothing": "nothing"
+}
