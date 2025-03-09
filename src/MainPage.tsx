@@ -11,6 +11,11 @@ function MainPage() {
     i18n.changeLanguage(language);
   };
 
+  const lngs = {
+    en: { nativeName: "English" },
+    es: { nativeName: "Español" },
+  };
+
   return (
     <div id="root">
       <div className="App-header">
@@ -18,20 +23,15 @@ function MainPage() {
       </div>
       <div className="App-intro">
         <div>
-          <button
-            style={{ border: i18n.language === "es" ? "solid" : "none" }}
-            type="submit"
-            onClick={() => changeLang("es")}
-          >
-            es
-          </button>
-          <button
-            style={{ border: i18n.language === "en" ? "solid" : "none" }}
-            type="submit"
-            onClick={() => changeLang("en")}
-          >
-            en
-          </button>
+          {Object.keys(lngs).map((lng) => (
+            <button
+              style={{ border: i18n.language === lng ? "solid" : "none" }}
+              type="submit"
+              onClick={() => changeLang(lng)}
+            >
+              {lngs[lng].nativeName}
+            </button>
+          ))}
         </div>
         <div className="App-detail">
           <p>{t("appDetail")}</p>
