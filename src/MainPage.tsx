@@ -14,8 +14,9 @@ function MainPage() {
   const lngs = {
     en: { nativeName: "English" },
     es: { nativeName: "Español" },
-  };
+  } as const;
 
+  type lngsTypes = keyof typeof lngs;
   return (
     <div id="root">
       <div className="App-header">
@@ -29,7 +30,7 @@ function MainPage() {
               type="submit"
               onClick={() => changeLang(lng)}
             >
-              {lngs[lng].nativeName}
+              {lngs[lng as lngsTypes].nativeName}
             </button>
           ))}
         </div>
