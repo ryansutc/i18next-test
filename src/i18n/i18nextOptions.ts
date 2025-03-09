@@ -1,4 +1,8 @@
-const i18nextOptions = {
+/**
+ * These are the options for the i18next language detection
+ * library. See: https://github.com/i18next/i18next-browser-languageDetector
+ */
+export default {
   // order and from where user language should be detected
   order: [
     "querystring",
@@ -10,7 +14,7 @@ const i18nextOptions = {
     "path",
     "subdomain",
   ],
-
+  load: "languageOnly", //https://github.com/i18next/i18next-http-backend
   // keys or params to lookup language from
   lookupQuerystring: "lng",
   lookupCookie: "i18next",
@@ -32,5 +36,3 @@ const i18nextOptions = {
   // optional conversion function used to modify the detected language code
   convertDetectedLanguage: "Iso15897",
 };
-
-export default i18nextOptions;

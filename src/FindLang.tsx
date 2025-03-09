@@ -1,18 +1,17 @@
 import "./App.css";
 
-import i18next from "i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
+import { useTranslation } from "react-i18next";
 
-import i18nextOptions from "./utils/i18nextOptions";
+import { languageDetector } from "./i18n/i18n";
+import i18nextOptions from "./i18n/i18nextOptions";
 
 function FindLang() {
-  const languageDetector = new LanguageDetector();
-  languageDetector.init(i18nextOptions);
+  const langDetector = languageDetector;
+  const { t, i18n } = useTranslation();
 
-  i18next.use(LanguageDetector);
-
-  // But for i18next, they have the browser-languageDetector that goes further,
-  // it checks: cookies, session, localStorage, navigator, url querystring, html tags,
+  // For i18next, they have the browser-langDetector that does a bunch of steps to detect your
+  // language preference.
+  // It checks: cookies, session, localStorage, navigator, url querystring, html tags,
   // and then the url path itself
 
   const capitalizeFirstChar = (str: string) => {
@@ -32,14 +31,21 @@ function FindLang() {
               <b>{`${option}`}</b>
               {!["navigator", "htmlTag", "path", "subdomain"].includes(
                 option
-              ) && <span>{` ${i18nextOptions[`${lookupProp}`]}`}</span>}
-              {" found: " +
-                languageDetector.detectors[option].lookup(
-                  languageDetector.options
-                )}
+              ) && <span>{` ${i18nextOptions[lookupProp]}`}</span>}
+              {` ${t("found")} ${
+                langDetector.detectors[option].lookup(langDetector.options) ??
+                t("nothing")
+              }`}
             </li>
           );
         })}
+      </div>
+      <div>
+        <p>
+          {" "}
+          {t("langDetected")}
+          <b>{` ${i18n.language}`}</b>{" "}
+        </p>
       </div>
     </div>
   );
